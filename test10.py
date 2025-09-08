@@ -1,0 +1,5 @@
+f = open("students.txt", "w")
+f.write("Anshul, 22\n")
+f.write("Rohit, 22\n")
+f.write("Priya, 21\n")
+f.close()

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml version="1.0.1" encoding="UTF-8">
+
+    <!-- MASTER GREETING -->
+    <category>
+        <pattern>GREETINGS</pattern>
+        <template>Hello! How can I help you today?</template>
+    </category>
+
+    <!-- GREETING VARIATIONS -->
+    <category><pattern>HI</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HI *</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HELLO</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HELLO *</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HII</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HII *</pattern><template><srai>GREETINGS</srai></template></category>
+    <category><pattern>HEY</pattern><template><srai>GREETINGS</srai></template></category>
+
+    <!-- NAME -->
+    <category>
+        <pattern>WHAT IS YOUR NAME</pattern>
+        <template>My name is AI Bot, your virtual assistant.</template>
+    </category>
+
+    <!-- WHO ARE YOU -->
+    <category>
+        <pattern>WHO ARE YOU</pattern>
+        <template>I am an AIML-based chatbot created to assist you.</template>
+    </category>
+
+    <!-- HOW ARE YOU -->
+    <category>
+        <pattern>HOW ARE YOU</pattern>
+        <template>I'm doing great! Thanks for asking.</template>
+    </category>
+
+    <!-- CAPABILITIES -->
+    <category>
+        <pattern>WHAT CAN YOU DO</pattern>
+        <template>I can chat with you, tell the time, date, jokes, fun facts, weather updates, and even search Wikipedia for you.</template>
+    </category>
+
+    <!-- TIME -->
+    <category>
+        <pattern>WHAT TIME IS IT</pattern>
+        <template>The current time will be fetched from my Python brain!</template>
+    </category>
+
+    <!-- DATE -->
+    <category>
+        <pattern>WHAT IS THE DATE</pattern>
+        <template>The current date will be provided by my system.</template>
+    </category>
+
+    <!-- JOKES -->
+    <category>
+        <pattern>TELL ME A JOKE</pattern>
+        <template>Why don't skeletons fight each other? Because they don't have the guts!</template>
+    </category>
+
+    <!-- FUN FACT -->
+    <category>
+        <pattern>TELL ME A FUN FACT</pattern>
+        <template>Did you know? Honey never spoils! Archaeologists found pots of honey in ancient Egyptian tombs that are over 3000 years old.</template>
+    </category>
+
+    <!-- FAREWELL -->
+    <category>
+        <pattern>BYE</pattern>
+        <template>Goodbye! Have a great day!</template>
+    </category>
+
+    <!-- DEFAULT FALLBACK -->
+    <category>
+        <pattern>*</pattern>
+        <template>I'm not sure how to respond to that. Could you ask me something else?</template>
+    </category>
+
+</aiml>

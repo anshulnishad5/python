@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: gray;
+            padding: 20px;
+        }
+        #chat-box {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 15px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .bot-message { color: blue; margin: 5px 0; }
+        .user-message { color: green; margin: 5px 0; text-align:left; }
+        img {
+            max-width: 200px;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+        button {
+            height: 36px;
+            width: 80px;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Smart Chatbot</h1>
+    <div id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type your message..." style="width: 70%; height: 30px;">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        src="{{ url_for('static', filename='script.js') }}"
+        function sendMessage() {
+            const userInput = document.getElementById("user-input");
+            const userMessage = userInput.value.trim();
+            if (!userMessage) return;
+
+            const chatBox = document.getElementById("chat-box");
+
+            // Display user message
+            const userMsgEl = document.createElement("p");
+            userMsgEl.textContent = userMessage;
+            userMsgEl.className = "user-message";
+            chatBox.appendChild(userMsgEl);
+
+            userInput.value = "";
+
+            // Send to Flask backend
+            fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: userMessage })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display bot text
+                const botMsgEl = document.createElement("p");
+                botMsgEl.textContent = data.reply;
+                botMsgEl.className = "bot-message";
+                chatBox.appendChild(botMsgEl);
+
+                // Display image if available
+                if (data.image_url) {
+                    const imgEl = document.createElement("img");
+                    imgEl.src = data.image_url;
+                    chatBox.appendChild(imgEl);
+                }
+
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+        }
+    </script>
+</body>
+</html>

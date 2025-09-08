@@ -1,0 +1,7 @@
+
+flask==2.3.4
+aiml==0.9.3
+requests==2.32.0
+wikipedia-api==0.5.8
+pytest==7.4.2
+```
